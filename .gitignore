@@ -1,0 +1,34 @@
+# Node modules
+node_modules/
+
+# Backup folder
+Cover-backup/
+
+# Compressed output (if different from Cover)
+Cover-compressed/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+._.DS_Store
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp

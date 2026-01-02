@@ -1,0 +1,17 @@
+{
+  "name": "vidian-image-compressor",
+  "version": "1.0.0",
+  "description": "Batch compress images using Sharp with watermark",
+  "main": "compress-images.js",
+  "scripts": {
+    "compress": "node compress-images.js",
+    "compress:no-watermark": "node compress-images.js --no-watermark"
+  },
+  "dependencies": {
+    "sharp": "^0.33.1",
+    "chalk": "^4.1.2"
+  },
+  "keywords": ["image", "compress", "sharp", "batch", "watermark"],
+  "author": "danhsakai",
+  "license": "MIT"
+}
