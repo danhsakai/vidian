@@ -1,0 +1,564 @@
+<style>
+  /* Article Container */
+  .fs-content h2 {
+    border-bottom: unset !important;
+  }
+  .card-text h1,
+  h2,
+  h3 {
+    font-size: unset;
+  }
+  .card-text p span {
+    font-size: unset !important;
+  }
+  .article {
+    margin: 0 auto;
+
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #2c2416;
+  }
+
+  /* Headings */
+  .article__title {
+    font-size: 2.3em !important;
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    color: #1a1108;
+  }
+
+  .article__heading--level2 {
+    font-size: 1.5em !important;
+    line-height: 1.4;
+    margin-top: 1.5em;
+    margin-bottom: 0.7em;
+    font-weight: 700;
+    color: #1a1108;
+    border-bottom: 1px solid #c9c0ab;
+    padding-bottom: 0.3em;
+  }
+
+  .article__heading--level3 {
+    font-size: 1.3em !important;
+    line-height: 1.4;
+    margin-top: 1.3em;
+    margin-bottom: 0.6em;
+    font-weight: 700;
+    color: #2c2416;
+  }
+
+  .article__heading--level4 {
+    font-size: 1.1em !important;
+    line-height: 1.4;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    color: #3d3520;
+  }
+
+  /* Paragraph */
+  .article__paragraph {
+    margin-bottom: 1.2em;
+    text-align: left;
+  }
+
+  /* Blockquote */
+  .article__quote {
+    margin: 1.5em 0;
+    padding: 1em 1.5em;
+    border-left: 4px solid #8b7355;
+    background-color: #f5f0e3;
+    font-style: italic;
+    color: #4a3f2e;
+  }
+
+  .article__quote-text {
+    margin-bottom: 0.5em;
+  }
+
+  .article__quote-author {
+    text-align: right;
+    font-size: 0.9em;
+    color: #6b5d47;
+  }
+
+  /* Images */
+  .article__image {
+    margin: 0 auto;
+  }
+
+  .article__image img {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    display: block;
+  }
+
+  .article__image-caption {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #6b5d47;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Image Gallery - Pinterest Style */
+  .article__gallery {
+    margin: 1.5em 0;
+  }
+
+  .article__gallery-grid {
+    column-count: 3;
+    column-gap: 0.35em;
+    margin-top: 1em;
+  }
+
+  .article__gallery-item {
+    break-inside: avoid;
+    margin: 0 0 0.35em 0;
+    padding: 0;
+    line-height: 0;
+  }
+
+  .article__gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    vertical-align: top;
+  }
+
+  /* Video */
+  .article__video {
+    margin: 1.5em 0;
+  }
+
+  .article__video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    margin-top: 1em;
+  }
+
+  .article__video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .article__video-caption {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #6b5d47;
+    text-align: center;
+  }
+
+  /* Lists */
+  .article__list {
+    margin: 1em 0 1.2em 0em;
+  }
+  .article__list-item {
+    margin-bottom: 0.5em;
+  }
+
+  .article__list--ordered {
+    list-style-type: decimal;
+  }
+
+  .article__list--unordered {
+    list-style-type: disc;
+  }
+
+  /* Table */
+  .article__table-wrapper {
+    margin: 1.5em 0;
+    overflow-x: auto;
+  }
+
+  .article__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    font-family: 'Merriweather', serif;
+  }
+
+  .article__table-caption {
+    margin-bottom: 0.7em;
+    font-weight: 700;
+    text-align: left;
+    font-family: 'Merriweather', serif;
+  }
+
+  .article__table th,
+  .article__table td {
+    padding: 0.75em;
+    text-align: left;
+    border: 1px solid #d4cbb5;
+    font-family: 'Merriweather', serif;
+  }
+
+  .article__table th {
+    background-color: #f5f0e3;
+    font-weight: 700;
+  }
+
+  .article__table tr:nth-child(even) {
+    background-color: #f9f6ec;
+  }
+
+  /* Metadata */
+  .article__meta {
+    text-align: right;
+    margin-top: 3em;
+    padding-top: 1.5em;
+    border-top: 2px solid #c9c0ab;
+    font-size: 0.9em;
+    color: #6b5d47;
+  }
+
+  .article__meta-item {
+    margin-bottom: 0.3em;
+  }
+
+  .article__meta-label {
+    font-weight: 700;
+    color: #4a3f2e;
+  }
+
+  /* ============================================
+     RESPONSIVE STYLES
+     ============================================ */
+
+  /* Responsive - Tablet Landscape & Desktop */
+  @media (min-width: 1024px) {
+    .article {
+      font-size: 19px;
+    }
+
+    .article__quote {
+      padding: 1.2em 2em;
+    }
+
+    .article__gallery-grid {
+      column-count: 3;
+    }
+  }
+
+  /* Responsive - Tablet Portrait */
+  @media (max-width: 1023px) and (min-width: 769px) {
+    .article {
+      font-size: 17px;
+    }
+
+    .article__title {
+      font-size: 2.2em !important;
+    }
+
+    .article__heading--level2 {
+      font-size: 1.7em !important;
+    }
+
+    .article__gallery-grid {
+      column-count: 2;
+    }
+  }
+
+  /* Responsive - Mobile Landscape & Tablet Portrait Small */
+  @media (max-width: 768px) and (min-width: 481px) {
+    .article {
+      font-size: 16px;
+    }
+
+    .article__title {
+      font-size: 1.9em;
+    }
+
+    .article__heading--level2 {
+      font-size: 1.5em !important;
+    }
+
+    .article__heading--level3 {
+      font-size: 1.3em !important;
+    }
+
+    .article__heading--level4 {
+      font-size: 1.05em !important;
+    }
+
+    .article__quote {
+      padding: 0.9em 1.2em;
+      border-left-width: 3px;
+    }
+
+    .article__gallery-grid {
+      column-count: 2;
+    }
+
+    .article__list {
+      margin-left: 1em;
+    }
+
+    .article__table {
+      font-size: 0.9em;
+    }
+
+    .article__table th,
+    .article__table td {
+      padding: 0.6em;
+    }
+  }
+
+  /* Responsive - Mobile Portrait */
+  @media (max-width: 480px) {
+    .article {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .article__title {
+      font-size: 1.75em;
+      line-height: 1.25;
+      margin-bottom: 0.6em;
+    }
+
+    .article__heading--level2 {
+      font-size: 1.4em !important;
+      margin-top: 1.3em;
+    }
+
+    .article__heading--level3 {
+      font-size: 1.2em !important;
+      margin-top: 1.2em;
+    }
+
+    .article__heading--level4 {
+      font-size: 1.05em !important;
+      margin-top: 1em;
+    }
+
+    .article__paragraph {
+      text-align: left;
+      margin-bottom: 1em;
+    }
+
+    .article__quote {
+      padding: 0.8em 1em;
+      margin: 1.2em 0;
+      border-left-width: 3px;
+      font-size: 0.95em;
+    }
+
+    .article__quote-author {
+      font-size: 0.85em;
+    }
+
+    .article__gallery-grid {
+      column-count: 1;
+      gap: 0.35em;
+    }
+
+    .article__gallery-item {
+      margin: 0 0 0.35em 0;
+      line-height: 0;
+    }
+
+    .article__gallery-item img {
+      border-radius: 6px;
+    }
+
+    .article__list {
+      font-size: 0.95em;
+      padding: 0 0 0 1.6em;
+    }
+
+    .article__list-item {
+      margin-bottom: 0.6em;
+    }
+
+    .article__table-wrapper {
+      margin: 1.2em -15px;
+      padding: 0 15px;
+    }
+
+    .article__table {
+      font-size: 0.95em;
+    }
+
+    .article__table th,
+    .article__table td {
+      padding: 0.5em 0.4em;
+      font-size: 0.95em;
+    }
+
+    .article__table-caption {
+      font-size: 0.9em;
+      padding: 0 15px;
+    }
+
+    .article__meta {
+      margin-top: 2.5em;
+      padding-top: 1.2em;
+      font-size: 0.85em;
+    }
+
+    .article__meta-item {
+      line-height: 1.6;
+    }
+
+    .article__meta-label {
+      display: inline-block;
+      min-width: 80px;
+    }
+  }
+
+  /* Responsive - Very Small Mobile */
+  @media (max-width: 360px) {
+    .article {
+      font-size: 15px;
+      padding: 15px 12px;
+    }
+
+    .article__title {
+      font-size: 1.6em;
+    }
+
+    .article__heading--level2 {
+      font-size: 1.3em;
+    }
+
+    .article__heading--level3 {
+      font-size: 1.15em;
+    }
+
+    .article__quote {
+      padding: 0.7em 0.9em;
+    }
+
+    .article__table {
+      font-size: 0.75em;
+    }
+
+    .article__meta {
+      font-size: 0.8em;
+    }
+
+    .article__meta-item {
+      margin-bottom: 0.5em;
+    }
+
+    .article__meta-label {
+      display: block;
+      min-width: auto;
+      margin-bottom: 0.2em;
+    }
+
+    .article__title {
+      font-size: 1.6em;
+    }
+
+    .article__heading--level2 {
+      font-size: 1.3em !important;
+    }
+
+    .article__heading--level3 {
+      font-size: 1.15em !important;
+    }
+
+    .article__quote {
+      padding: 0.7em 0.9em;
+    }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+  rel="stylesheet"
+/>
+<article class="article">
+<h1 class="article__title">Test Pattern Expansion</h1>
+<h2 class="article__heading--level2">Gallery với pattern đơn giản</h2>
+<p class="article__paragraph">Thay vì viết 6 dòng, chỉ cần 1 dòng:</p>
+<div class="article__gallery-grid">
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/TrieuTuongNhi-0.webp" alt="Triệu Tương Nhi" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/TrieuTuongNhi-1.webp" alt="Triệu Tương Nhi" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/TrieuTuongNhi-2.webp" alt="Triệu Tương Nhi" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/TrieuTuongNhi-3.webp" alt="Triệu Tương Nhi" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/TrieuTuongNhi-4.webp" alt="Triệu Tương Nhi" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/TrieuTuongNhi-5.webp" alt="Triệu Tương Nhi" />
+  </figure>
+</div>
+<h2 class="article__heading--level2">Gallery với pattern khác</h2>
+<div class="article__gallery-grid">
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/NinhTruongCuu-0.webp" alt="Ninh Trường Cửu" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/NinhTruongCuu-1.webp" alt="Ninh Trường Cửu" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/NinhTruongCuu-2.webp" alt="Ninh Trường Cửu" />
+  </figure>
+</div>
+<h2 class="article__heading--level2">Ảnh đơn bình thường</h2>
+<figure class="article__image">
+<img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/1000.webp" alt="Ảnh đơn" />
+</figure>
+<h2 class="article__heading--level2">Mix pattern và ảnh thường</h2>
+<div class="article__gallery-grid">
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/DuongVu-0.webp" alt="Dương Vũ" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/1000.webp" alt="Ảnh đơn" />
+  </figure>
+</div>
+<h2 class="article__heading--level2">Mix pattern và ảnh thường</h2>
+<div class="article__gallery-grid">
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/DuongVu-1.webp" alt="Dương Vũ" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/1000.webp" alt="Ảnh đơn" />
+  </figure>
+</div>
+<h2 class="article__heading--level2">Mix pattern và ảnh thường</h2>
+<div class="article__gallery-grid">
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/DuongVu-2.webp" alt="Dương Vũ" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/LucGiaGia-0.webp" alt="Lục Giá Giá" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/LucGiaGia-1.webp" alt="Lục Giá Giá" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/LucGiaGia-2.webp" alt="Lục Giá Giá" />
+  </figure>
+  <figure class="article__gallery-item">
+    <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/LucGiaGia-3.webp" alt="Lục Giá Giá" />
+  </figure>
+</div>
+<h2 class="article__heading--level2">Kết thúc</h2>
+<p class="article__paragraph">Đó là tất cả!</p>
+</article>
+

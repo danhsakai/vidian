@@ -5,14 +5,22 @@
   "main": "compress-images.js",
   "scripts": {
     "compress": "node compress-images.js",
-    "compress:no-watermark": "node compress-images.js --no-watermark"
+    "compress:no-watermark": "node compress-images.js --no-watermark",
+    "convert": "node convert-md-to-html.js",
+    "convert:help": "node convert-md-to-html.js --help"
   },
   "dependencies": {
-    "sharp": "^0.33.1",
     "chalk": "^4.1.2",
-    "marked": "^4.3.0"
+    "marked": "^17.0.1",
+    "sharp": "^0.33.1"
   },
-  "keywords": ["image", "compress", "sharp", "batch", "watermark"],
+  "keywords": [
+    "image",
+    "compress",
+    "sharp",
+    "batch",
+    "watermark"
+  ],
   "author": "danhsakai",
   "license": "MIT"
 }
