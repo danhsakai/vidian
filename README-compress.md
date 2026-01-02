@@ -1,9 +1,10 @@
-# 📸 Image Compressor - Sharp + Watermark
+# 📸 Image Toolkit - Compress & CDN URL Converter
 
-Batch compress images to WebP format with watermark using Sharp library.
+Batch compress images to WebP format with watermark and convert GitHub URLs to jsDelivr CDN URLs.
 
 ## ✨ Features
 
+**Image Compression:**
 - ✅ Convert JPG/PNG to WebP (30-50% smaller)
 - ✅ Add watermark "Từ Tỉnh" automatically
 - ✅ Backup original files
@@ -11,6 +12,12 @@ Batch compress images to WebP format with watermark using Sharp library.
 - ✅ Fast processing with Sharp
 - ✅ No API key needed
 - ✅ Offline processing
+
+**URL Conversion:**
+- ✅ Convert GitHub raw URLs to jsDelivr CDN URLs
+- ✅ Support batch conversion (multiple URLs)
+- ✅ Auto-change file extension (jpg → webp)
+- ✅ Fast CDN delivery worldwide
 
 ## 🚀 Quick Start
 
@@ -27,6 +34,18 @@ npm run compress
 ### 3. Compress without watermark
 ```bash
 npm run compress:no-watermark
+```
+
+### 4. Convert GitHub URLs to CDN URLs
+```bash
+# Single URL
+node convert-cdn-url.js "https://raw.githubusercontent.com/danhsakai/vidian/refs/heads/main/Cover/image.jpg"
+
+# With extension change (jpg → webp)
+node convert-cdn-url.js --ext webp "https://raw.githubusercontent.com/danhsakai/vidian/refs/heads/main/Cover/image.jpg"
+
+# Multiple URLs
+node convert-cdn-url.js --ext webp "URL1" "URL2" "URL3"
 ```
 
 ## 📋 What it does
@@ -83,6 +102,50 @@ Change `position` in CONFIG:
 - Output files are WebP format
 - Original JPG files remain in `Cover/` (you can delete manually)
 - Watermark uses system fonts (Arial/Helvetica)
+- jsDelivr CDN provides free, fast global delivery
+- CDN URLs cache automatically for better performance
+
+## 🌐 URL Conversion Examples
+
+**Input (GitHub Raw):**
+```
+https://raw.githubusercontent.com/danhsakai/vidian/refs/heads/main/Cover/86f9311ab74f7f7e540e955791452828.jpg
+```
+
+**Output (jsDelivr CDN):**
+```
+https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/86f9311ab74f7f7e540e955791452828.jpg
+```
+
+**With extension change:**
+```bash
+node convert-cdn-url.js --ext webp "https://raw.githubusercontent.com/..."
+# Output: https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/image.webp
+```
+
+## 🔄 Complete Workflow
+
+1. **Compress images** with watermark:
+   ```bash
+   npm run compress
+   ```
+
+2. **Upload to GitHub**:
+   ```bash
+   git add Cover/*.webp
+   git commit -m "Add compressed images"
+   git push
+   ```
+
+3. **Convert URLs** to CDN format:
+   ```bash
+   node convert-cdn-url.js --ext webp "https://raw.githubusercontent.com/danhsakai/vidian/refs/heads/main/Cover/image.jpg"
+   ```
+
+4. **Use CDN URL** in your HTML:
+   ```html
+   <img src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/image.webp" alt="Image">
+   ```
 
 ## 🔧 Troubleshooting
 
