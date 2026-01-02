@@ -1,0 +1,720 @@
+<style>
+  /* Article Container */
+  .fs-content h2 {
+    border-bottom: unset !important;
+  }
+  .card-text h1,
+  h2,
+  h3 {
+    font-size: unset;
+  }
+  .card-text p span {
+    font-size: unset !important;
+  }
+  .article {
+    margin: 0 auto;
+
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #2c2416;
+  }
+
+  /* Headings */
+  .article__title {
+    font-size: 2.3em !important;
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    color: #1a1108;
+  }
+
+  .article__heading--level2 {
+    font-size: 1.5em !important;
+    line-height: 1.4;
+    margin-top: 1.5em;
+    margin-bottom: 0.7em;
+    font-weight: 700;
+    color: #1a1108;
+    border-bottom: 1px solid #c9c0ab;
+    padding-bottom: 0.3em;
+  }
+
+  .article__heading--level3 {
+    font-size: 1.3em !important;
+    line-height: 1.4;
+    margin-top: 1.3em;
+    margin-bottom: 0.6em;
+    font-weight: 700;
+    color: #2c2416;
+  }
+
+  .article__heading--level4 {
+    font-size: 1.1em !important;
+    line-height: 1.4;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    color: #3d3520;
+  }
+
+  /* Paragraph */
+  .article__paragraph {
+    margin-bottom: 1.2em;
+    text-align: left;
+  }
+
+  /* Blockquote */
+  .article__quote {
+    margin: 1.5em 0;
+    padding: 1em 1.5em;
+    border-left: 4px solid #8b7355;
+    background-color: #f5f0e3;
+    font-style: italic;
+    color: #4a3f2e;
+  }
+
+  .article__quote-text {
+    margin-bottom: 0.5em;
+  }
+
+  .article__quote-author {
+    text-align: right;
+    font-size: 0.9em;
+    color: #6b5d47;
+  }
+
+  /* Images */
+  .article__image {
+    margin: 0 auto;
+  }
+
+  .article__image img {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    display: block;
+  }
+
+  .article__image-caption {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #6b5d47;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Image Gallery */
+  .article__gallery {
+    margin: 1.5em 0;
+  }
+
+  .article__gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1em;
+    margin-top: 1em;
+  }
+
+  .article__gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .article__gallery-caption {
+    margin-top: 0.5em;
+    font-size: 0.85em;
+    color: #6b5d47;
+    text-align: center;
+  }
+
+  /* Video */
+  .article__video {
+    margin: 1.5em 0;
+  }
+
+  .article__video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    margin-top: 1em;
+  }
+
+  .article__video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .article__video-caption {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #6b5d47;
+    text-align: center;
+  }
+
+  /* Lists */
+  .article__list {
+    margin: 1em 0 1.2em 0em;
+  }
+  0 .article__list-item {
+    margin-bottom: 0.5em;
+  }
+
+  .article__list--ordered {
+    list-style-type: decimal;
+  }
+
+  .article__list--unordered {
+    list-style-type: disc;
+  }
+
+  /* Table */
+  .article__table-wrapper {
+    margin: 1.5em 0;
+    overflow-x: auto;
+  }
+
+  .article__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    font-family: 'Merriweather', serif;
+  }
+
+  .article__table-caption {
+    margin-bottom: 0.7em;
+    font-weight: 700;
+    text-align: left;
+    font-family: 'Merriweather', serif;
+  }
+
+  .article__table th,
+  .article__table td {
+    padding: 0.75em;
+    text-align: left;
+    border: 1px solid #d4cbb5;
+    font-family: 'Merriweather', serif;
+  }
+
+  .article__table th {
+    background-color: #f5f0e3;
+    font-weight: 700;
+  }
+
+  .article__table tr:nth-child(even) {
+    background-color: #f9f6ec;
+  }
+
+  /* Metadata */
+  .article__meta {
+    text-align: right;
+    margin-top: 3em;
+    padding-top: 1.5em;
+    border-top: 2px solid #c9c0ab;
+    font-size: 0.9em;
+    color: #6b5d47;
+  }
+
+  .article__meta-item {
+    margin-bottom: 0.3em;
+  }
+
+  .article__meta-label {
+    font-weight: 700;
+    color: #4a3f2e;
+  }
+
+  /* ============================================
+     RESPONSIVE STYLES
+     ============================================ */
+
+  /* Responsive - Tablet Landscape & Desktop */
+  @media (min-width: 1024px) {
+    .article {
+      font-size: 19px;
+    }
+
+    .article__quote {
+      padding: 1.2em 2em;
+    }
+
+    .article__gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Responsive - Tablet Portrait */
+  @media (max-width: 1023px) and (min-width: 769px) {
+    .article {
+      font-size: 17px;
+    }
+
+    .article__title {
+      font-size: 2.2em !important;
+    }
+
+    .article__heading--level2 {
+      font-size: 1.7em !important;
+    }
+
+    .article__gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Responsive - Mobile Landscape & Tablet Portrait Small */
+  @media (max-width: 768px) and (min-width: 481px) {
+    .article {
+      font-size: 16px;
+    }
+
+    .article__title {
+      font-size: 1.9em;
+    }
+
+    .article__heading--level2 {
+      font-size: 1.5em !important;
+    }
+
+    .article__heading--level3 {
+      font-size: 1.3em !important;
+    }
+
+    .article__heading--level4 {
+      font-size: 1.05em !important;
+    }
+
+    .article__quote {
+      padding: 0.9em 1.2em;
+      border-left-width: 3px;
+    }
+
+    .article__gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .article__list {
+      margin-left: 1em;
+    }
+
+    .article__table {
+      font-size: 0.9em;
+    }
+
+    .article__table th,
+    .article__table td {
+      padding: 0.6em;
+    }
+  }
+
+  /* Responsive - Mobile Portrait */
+  @media (max-width: 480px) {
+    .article {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .article__title {
+      font-size: 1.75em;
+      line-height: 1.25;
+      margin-bottom: 0.6em;
+    }
+
+    .article__heading--level2 {
+      font-size: 1.4em !important;
+      margin-top: 1.3em;
+    }
+
+    .article__heading--level3 {
+      font-size: 1.2em !important;
+      margin-top: 1.2em;
+    }
+
+    .article__heading--level4 {
+      font-size: 1.05em !important;
+      margin-top: 1em;
+    }
+
+    .article__paragraph {
+      text-align: left;
+      margin-bottom: 1em;
+    }
+
+    .article__quote {
+      padding: 0.8em 1em;
+      margin: 1.2em 0;
+      border-left-width: 3px;
+      font-size: 0.95em;
+    }
+
+    .article__quote-author {
+      font-size: 0.85em;
+    }
+
+    .article__gallery-grid {
+      grid-template-columns: 1fr;
+      gap: 0.8em;
+    }
+
+    .article__gallery-item img {
+      height: 180px;
+    }
+
+    .article__list {
+      font-size: 0.95em;
+      padding: 0 0 0 1.6em;
+    }
+
+    .article__list-item {
+      margin-bottom: 0.6em;
+    }
+
+    .article__table-wrapper {
+      margin: 1.2em -15px;
+      padding: 0 15px;
+    }
+
+    .article__table {
+      font-size: 0.95em;
+    }
+
+    .article__table th,
+    .article__table td {
+      padding: 0.5em 0.4em;
+      font-size: 0.95em;
+    }
+
+    .article__table-caption {
+      font-size: 0.9em;
+      padding: 0 15px;
+    }
+
+    .article__meta {
+      margin-top: 2.5em;
+      padding-top: 1.2em;
+      font-size: 0.85em;
+    }
+
+    .article__meta-item {
+      line-height: 1.6;
+    }
+
+    .article__meta-label {
+      display: inline-block;
+      min-width: 80px;
+    }
+  }
+
+  /* Responsive - Very Small Mobile */
+  @media (max-width: 360px) {
+    .article {
+      font-size: 15px;
+      padding: 15px 12px;
+    }
+
+    .article__title {
+      font-size: 1.6em;
+    }
+
+    .article__heading--level2 {
+      font-size: 1.3em;
+    }
+
+    .article__heading--level3 {
+      font-size: 1.15em;
+    }
+
+    .article__quote {
+      padding: 0.7em 0.9em;
+    }
+
+    .article__table {
+      font-size: 0.75em;
+    }
+
+    .article__meta {
+      font-size: 0.8em;
+    }
+
+    .article__meta-item {
+      margin-bottom: 0.5em;
+    }
+
+    .article__meta-label {
+      display: block;
+      min-width: auto;
+      margin-bottom: 0.2em;
+    }
+
+    .article__title {
+      font-size: 1.6em;
+    }
+
+    .article__heading--level2 {
+      font-size: 1.3em !important;
+    }
+
+    .article__heading--level3 {
+      font-size: 1.15em !important;
+    }
+
+    .article__quote {
+      padding: 0.7em 0.9em;
+    }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+  rel="stylesheet"
+/>
+<article class="article">
+  <!-- H1 - Tiêu đề chính -->
+  <h1 class="article__title">
+    Lịch sử và Ảnh hưởng của Tiểu thuyết Trung Quốc Cổ điển
+  </h1>
+
+  <!-- Paragraph -->
+  <p class="article__paragraph">
+    Tiểu thuyết Trung Quốc cổ điển là một phần quan trọng trong kho tàng văn học
+    thế giới, với lịch sử phát triển hàng nghìn năm. Từ những tác phẩm đầu tiên
+    được ghi chép bằng chữ Hán cho đến các kiệt tác văn chương được lưu truyền
+    rộng rãi, tiểu thuyết Trung Quốc đã để lại dấu ấn sâu sắc trong văn hóa
+    không chỉ của Trung Quốc mà còn của cả khu vực Đông Á.
+  </p>
+
+  <!-- H2 -->
+  <h2 class="article__heading--level2">
+    Bốn Đại Danh Tác của Văn học Trung Quốc
+  </h2>
+
+  <p class="article__paragraph">
+    Văn học Trung Quốc cổ điển có bốn tác phẩm được coi là "Tứ Đại Danh Tác"
+    (四大名著), đại diện cho đỉnh cao của nghệ thuật kể chuyện và sáng tác văn
+    học.
+  </p>
+
+  <!-- H3 -->
+  <h3 class="article__heading--level3">Tam Quốc Diễn Nghĩa</h3>
+
+  <!-- Quote -->
+  <blockquote class="article__quote">
+    <p class="article__quote-text">
+      "Thiên hạ đại thế, phân cửu tất hợp, hợp cửu tất phân" - Câu mở đầu bất hủ
+      của Tam Quốc Diễn Nghĩa, phản ánh quy luật vận động của lịch sử.
+    </p>
+    <p class="article__quote-author">— La Quán Trung, Tam Quốc Diễn Nghĩa</p>
+  </blockquote>
+
+  <p class="article__paragraph">
+    Tác phẩm của La Quán Trung kể về thời kỳ Tam Quốc (220-280), một trong những
+    giai đoạn hỗn loạn và anh hùng nhất trong lịch sử Trung Quốc. Cuốn sách miêu
+    tả sống động các nhân vật như Gia Cát Lượng, Quan Vũ, Triệu Vân và Tào Tháo.
+  </p>
+
+  <!-- Image -->
+  <figure class="article__image">
+    <img
+      src="https://images.unsplash.com/photo-1767277672167-18105701959b"
+      alt="Minh họa Tam Quốc Diễn Nghĩa"
+    />
+    <figcaption class="article__image-caption">
+      Bìa sách Tam Quốc Diễn Nghĩa phiên bản cổ
+    </figcaption>
+  </figure>
+
+  <!-- H4 -->
+  <h4 class="article__heading--level4">Các nhân vật chính trong Tam Quốc</h4>
+
+  <!-- Unordered List -->
+  <ul class="article__list article__list--unordered">
+    <li class="article__list-item">
+      Lưu Bị - Vị vua nhân đức của nước Thúc Hán
+    </li>
+    <li class="article__list-item">
+      Tào Tháo - Thủ lãnh đầy tham vọng của Ngụy
+    </li>
+    <li class="article__list-item">Tôn Quyền - Chúa công của Đông Ngô</li>
+    <li class="article__list-item">
+      Gia Cát Lượng - Quân sư tài ba, biểu tượng của trí tuệ
+    </li>
+  </ul>
+
+  <!-- H3 -->
+  <h3 class="article__heading--level3">Thủy Hử</h3>
+
+  <p class="article__paragraph">
+    Thủy Hử (水浒传) của Thi Nại Am là câu chuyện về 108 anh hùng hảo hán tụ
+    nghĩa tại Lương Sơn Bạc, chống lại triều đình tham nhũng. Tác phẩm ca ngợi
+    tinh thần nghĩa khí và lòng dũng cảm của những người anh hùng.
+  </p>
+
+  <!-- Image Gallery -->
+  <div class="article__gallery">
+    <h4 class="article__heading--level4">
+      Hình ảnh các anh hùng Lương Sơn Bạc
+    </h4>
+    <div class="article__gallery-grid">
+      <figure class="article__gallery-item">
+        <img
+          src="https://images.unsplash.com/photo-1767277672167-18105701959b"
+          alt="Tống Giang"
+        />
+        <figcaption class="article__gallery-caption">
+          Tống Giang - Thủ lãnh Lương Sơn
+        </figcaption>
+      </figure>
+      <figure class="article__gallery-item">
+        <img
+          src="https://images.unsplash.com/photo-1761839258289-72f12b0de058?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Vũ Tòng"
+        />
+        <figcaption class="article__gallery-caption">
+          Vũ Tòng - Anh hùng đả hổ
+        </figcaption>
+      </figure>
+      <figure class="article__gallery-item">
+        <img
+          src="https://images.unsplash.com/photo-1767288832047-7d23f6c8c26c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Lâm Xung"
+        />
+        <figcaption class="article__gallery-caption">
+          Lâm Xung - Đại đao hảo hán
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- H2 -->
+  <h2 class="article__heading--level2">
+    Ảnh hưởng của Tiểu thuyết Trung Quốc đến Văn hóa Đông Á
+  </h2>
+
+  <p class="article__paragraph">
+    Tiểu thuyết Trung Quốc cổ điển không chỉ ảnh hưởng sâu sắc đến văn học mà
+    còn tác động mạnh mẽ đến điện ảnh, truyền hình, và văn hóa đại중 của nhiều
+    quốc gia trong khu vực.
+  </p>
+
+  <!-- Video YouTube -->
+  <div class="article__video">
+    <h4 class="article__heading--level4">
+      Phim chuyển thể Tam Quốc Diễn Nghĩa
+    </h4>
+    <div class="article__video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/Hqmbo0ROBQw?si=bbRNDrnVVC0q2KE1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      >
+      </iframe>
+    </div>
+    <p class="article__video-caption">
+      Trailer bộ phim Tam Quốc Diễn Nghĩa phiên bản 2010
+    </p>
+  </div>
+
+  <!-- H3 -->
+  <h3 class="article__heading--level3">Thống kê các tác phẩm chuyển thể</h3>
+
+  <!-- Ordered List -->
+  <ol class="article__list article__list--ordered">
+    <li class="article__list-item">
+      Phim truyền hình dài tập (hơn 200 tác phẩm)
+    </li>
+    <li class="article__list-item">Phim điện ảnh (hơn 100 bộ phim)</li>
+    <li class="article__list-item">
+      Kịch sân khấu và kịch nói (hàng nghìn vở diễn)
+    </li>
+    <li class="article__list-item">
+      Trò chơi điện tử và truyện tranh (không đếm xuể)
+    </li>
+  </ol>
+
+  <!-- Table -->
+  <div class="article__table-wrapper">
+    <table class="article__table">
+      <caption class="article__table-caption">
+        So sánh Tứ Đại Danh Tác
+      </caption>
+      <thead>
+        <tr>
+          <th>Tác phẩm</th>
+          <th>Tác giả</th>
+          <th>Thời kỳ sáng tác</th>
+          <th>Thể loại chính</th>
+          <th>Số chương</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tam Quốc Diễn Nghĩa</td>
+          <td>La Quán Trung</td>
+          <td>Thế kỷ 14</td>
+          <td>Lịch sử - Anh hùng</td>
+          <td>120</td>
+        </tr>
+        <tr>
+          <td>Thủy Hử</td>
+          <td>Thi Nại Am</td>
+          <td>Thế kỷ 14</td>
+          <td>Anh hùng - Nghĩa hiệp</td>
+          <td>120</td>
+        </tr>
+        <tr>
+          <td>Tây Du Ký</td>
+          <td>Ngô Thừa Ân</td>
+          <td>Thế kỷ 16</td>
+          <td>Thần thoại - Phiêu lưu</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>Hồng Lâu Mộng</td>
+          <td>Tào Tuyết Cần</td>
+          <td>Thế kỷ 18</td>
+          <td>Tình cảm - Gia đình</td>
+          <td>120</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- H2 -->
+  <h2 class="article__heading--level2">Kết luận</h2>
+
+  <p class="article__paragraph">
+    Tiểu thuyết Trung Quốc cổ điển là kho tàng văn hóa vô giá, phản ánh sâu sắc
+    tư tưởng, triết lý và lịch sử của dân tộc Trung Hoa. Những tác phẩm này
+    không chỉ giải trí mà còn chứa đựng những bài học nhân sinh sâu sắc, góp
+    phần hình thành nhân cách và thế giới quan của hàng triệu độc giả qua các
+    thế hệ.
+  </p>
+
+  <blockquote class="article__quote">
+    <p class="article__quote-text">
+      Đọc sách cổ không phải để trở thành người xưa, mà để hiểu được con người
+      và xã hội từ góc nhìn rộng lớn hơn.
+    </p>
+    <p class="article__quote-author">— Ngạn ngữ Trung Quốc</p>
+  </blockquote>
+
+  <!-- Metadata -->
+  <div class="article__meta">
+    <p class="article__meta-item">
+      <span class="article__meta-label">Tác giả:</span> Nguyễn Văn A
+    </p>
+    <p class="article__meta-item">
+      <span class="article__meta-label">Nguồn:</span> P73 - Tạp chí Văn học Đông
+      Á
+    </p>
+  </div>
+</article>
