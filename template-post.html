@@ -105,30 +105,30 @@
     font-style: italic;
   }
 
-  /* Image Gallery */
+  /* Image Gallery - Pinterest Style */
   .article__gallery {
     margin: 1.5em 0;
   }
 
   .article__gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1em;
+    column-count: 3;
+    column-gap: 0.35em;
     margin-top: 1em;
+  }
+
+  .article__gallery-item {
+    break-inside: avoid;
+    margin: 0 0 0.35em 0;
+    padding: 0;
+    line-height: 0;
   }
 
   .article__gallery-item img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto;
     display: block;
-  }
-
-  .article__gallery-caption {
-    margin-top: 0.5em;
-    font-size: 0.85em;
-    color: #6b5d47;
-    text-align: center;
+    border-radius: 8px;
+    vertical-align: top;
   }
 
   /* Video */
@@ -247,7 +247,7 @@
     }
 
     .article__gallery-grid {
-      grid-template-columns: repeat(3, 1fr);
+      column-count: 3;
     }
   }
 
@@ -266,7 +266,7 @@
     }
 
     .article__gallery-grid {
-      grid-template-columns: repeat(2, 1fr);
+      column-count: 2;
     }
   }
 
@@ -298,7 +298,7 @@
     }
 
     .article__gallery-grid {
-      grid-template-columns: repeat(2, 1fr);
+      column-count: 2;
     }
 
     .article__list {
@@ -360,12 +360,17 @@
     }
 
     .article__gallery-grid {
-      grid-template-columns: 1fr;
-      gap: 0.8em;
+      column-count: 1;
+      gap: 0.35em;
+    }
+
+    .article__gallery-item {
+      margin: 0 0 0.35em 0;
+      line-height: 0;
     }
 
     .article__gallery-item img {
-      height: 180px;
+      border-radius: 6px;
     }
 
     .article__list {
@@ -527,9 +532,6 @@
       src="https://cdn.jsdelivr.net/gh/danhsakai/vidian@main/Cover/86f9311ab74f7f7e540e955791452828.webm"
       alt="Minh họa Tam Quốc Diễn Nghĩa"
     />
-    <figcaption class="article__image-caption">
-      Bìa sách Tam Quốc Diễn Nghĩa phiên bản cổ
-    </figcaption>
   </figure>
 
   <!-- H4 -->
@@ -569,27 +571,6 @@
           src="https://images.unsplash.com/photo-1767277672167-18105701959b"
           alt="Tống Giang"
         />
-        <figcaption class="article__gallery-caption">
-          Tống Giang - Thủ lãnh Lương Sơn
-        </figcaption>
-      </figure>
-      <figure class="article__gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1761839258289-72f12b0de058?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Vũ Tòng"
-        />
-        <figcaption class="article__gallery-caption">
-          Vũ Tòng - Anh hùng đả hổ
-        </figcaption>
-      </figure>
-      <figure class="article__gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1767288832047-7d23f6c8c26c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Lâm Xung"
-        />
-        <figcaption class="article__gallery-caption">
-          Lâm Xung - Đại đao hảo hán
-        </figcaption>
       </figure>
     </div>
   </div>
